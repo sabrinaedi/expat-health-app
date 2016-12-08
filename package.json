@@ -1,0 +1,25 @@
+{
+  "name": "expat-health-app",
+  "version": "1.0.0",
+  "description": "This app aims to support expats in Amsterdam in finding expat-friendly health centres and practitioners by providing a map with information on languages, ratings and the acceptance of the EHIC.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabrinaedi/expat-health-app.git"
+  },
+  "author": "Sabrina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sabrinaedi/expat-health-app/issues"
+  },
+  "homepage": "https://github.com/sabrinaedi/expat-health-app#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pg": "^6.1.0",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "^3.27.0"
+  }
+}
