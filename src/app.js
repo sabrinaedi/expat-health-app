@@ -11,6 +11,9 @@ app.set('view engine', 'pug')
 app.use(express.static(__dirname + '/../static'))
 
 // set up routers
+let read = require (__dirname + '/routes/jsonreader')
+let gmaps = require (__dirname + '/routes/gmap')
+
 
 //set up google API key
 let GmapsKey = process.env.GMAPS_KEY
@@ -56,7 +59,16 @@ app.get('/ping', (req, res) => {
 })
 
 app.get('/', (req, res) => {
+	console.log('index is running')
 	res.render('index')
+})
+
+app.post('/gpData', (req, res) => {
+	read(__dirname + '/datasets/huisartsen.json', function (data) {
+		let locations = data
+//		console.log(locations)
+		res.send(locations)
+	})
 })
 
 
