@@ -15,8 +15,6 @@ $(document).ready(function() {
       map: map
     })
 
-
-
       map.data.setStyle({
         icon: '//example.com/path/to/image.png',
         fillColor: 'green'
@@ -24,15 +22,16 @@ $(document).ready(function() {
 
 
     $.post('/gpData', function (results) {
-      for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates;
+//      console.log(results)
+
+      for (var i = 0; i < results.length; i++) {
+        var coords = results[i].latlong;
+        console.log(coords)
         var latLng = new google.maps.LatLng(coords[1],coords[0]);
         var marker = new google.maps.Marker({
           position: latLng,
           map: map
         })
       }
-      console.log(results)
     })
-
   }
