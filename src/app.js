@@ -36,6 +36,7 @@ let User = db.define('users', {
 let Location =  db.define('locations', {
 	name: sequelize.STRING,
 	address: sequelize.STRING,
+	internet: sequelize.STRING,
 	latlong: sequelize.ARRAY(sequelize.STRING),
 	type: sequelize.STRING
 })
@@ -94,7 +95,8 @@ let update = () => {
 			Location.create({
 				name: data.features[i].properties.titel,
 				address: data.features[i].properties.adres + ', ' + data.features[i].properties.postcode,
-				latlong: data.features[i].geometry.coordinates
+				latlong: data.features[i].geometry.coordinates,
+				internet: data.features[i].properties.internet
 			})
 		}
 	})
@@ -130,7 +132,7 @@ let update = () => {
 
 
 // sync db, them listen to port 8000
-db.sync().then(db => {
+db.sync({force:true}).then(db => {
 	console.log('data was synced')
 }).then (db => {
 	app.listen(8000, (req, res) => {
