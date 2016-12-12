@@ -21,12 +21,9 @@ function initMap() {
   });
 
 
-
-
   $.post('/gpData', function (results) {
 //      console.log(results)
     var infowindow = new google.maps.InfoWindow()
-    var contentString = "blablaba"
 
     function placeMarker(results) {
         var coords = results[i].latlong;
@@ -40,7 +37,7 @@ function initMap() {
         })
         google.maps.event.addListener(marker, 'click', function(){
         infowindow.close(); // Close previously opened infowindow
-        infowindow.setContent( name);
+        infowindow.setContent( "<div id='infowindow'>"+ name + "</br> <a href='/review'> Add review </a> </div>"  );
         infowindow.open(map, marker);
       }) 
     }
