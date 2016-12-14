@@ -33,7 +33,7 @@ let Review = db.define('reviews', {
 User.hasMany(Review)
 Location.hasMany(Review)
 Review.belongsTo(Location)
-Review.belongsTo(Review)
+Review.belongsTo(User)
 
 module.exports = {
 	conn: db,

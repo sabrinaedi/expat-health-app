@@ -1,6 +1,38 @@
 $(document).ready(function() {
   console.log("DOM ready")
+  $('select').material_select()
+  languages()
+  initMap()
+  $('.modal-trigger').leanModal()
+//  $('#modal1').modal('open')
+  $('#modal1').closeModal();
+
 })
+
+function languages () {
+//  console.log('something is happening')
+  $.get("/getLanguage", function (data, stat) {
+
+//    console.log("the ajax requests works as it should")
+
+    var select = document.getElementById('pickLanguage')
+    var options = data
+
+//    console.log(options)
+
+    for(var i = 0; i < options.length; i++) {
+      var opt = options[i]
+      var el = document.createElement("option")
+      el.textContent = opt
+//      console.log(opt)
+      el.value = opt
+      select.appendChild(el)
+//      console.log(el)
+    }
+
+    $('select').material_select()
+  })
+}
 
 function initMap() {
   var Amsterdam = {lat: 52.3702157, lng: 4.895167899999933};
@@ -21,30 +53,50 @@ function initMap() {
   });
 
 
-  $.post('/gpData', function (results) {
+  $.get('/gpData', function (results) {
 //      console.log(results)
     var infowindow = new google.maps.InfoWindow()
 
-    function placeMarker(results) {
-        var coords = results[i].latlong;
+    function placeMarker(results, i) {
+        var coords = results.data[i].latlong;
 //        console.log(results[i].name)
-        var name = results[i].name
-        console.log(coords)
+        var name = results.data[i].name
+        var id = results.data[i].id
+        var address = results.data[i].address
+        var internet = results.data[i].internet
+        var array = []
+
+        if (results.data[i].reviews.length > 0) {
+          for (var x = 0; x < results.data[i].reviews.length; x++) {
+            var reviewStr = "<div class='box'>" + results.data[i].reviews[x].rating + "<br>" + results.data[i].reviews[x].comment + "</div>"
+          console.log(results.data[i].reviews[x])
+          }
+        } else {
+          var reviewStr = "No Review"
+        }
+
+//      var reviewStr = (results.data[i].reviews.length > 0) ? results.data[i].reviews[x].rating + "<br>" + results.data[i].reviews[x].comment : "No review"
+//      console.log(results.data[i].reviews[i].comment)
+//        if (results.data[i].reviews.length > 0) console.log(results.data[i].name)
+
+//        console.log(coords)
         var latLng = new google.maps.LatLng(coords[1],coords[0]);
         var marker = new google.maps.Marker({
           position: latLng,
           map: map
         })
+        marker.reviewStr = reviewStr
         google.maps.event.addListener(marker, 'click', function(){
-        infowindow.close(); // Close previously opened infowindow
-        infowindow.setContent( "<div id='infowindow'>"+ name + "</br> <a href='/review'> Add review </a> </div>"  );
-        infowindow.open(map, marker);
+          infowindow.close(); // Close previously opened infowindow
+          infowindow.setContent( "<div id='infowindow'><div id='iw-container'><div class='iw-title'>"+ name + "</div><div class='info'>" + address + "<br>" + internet + "<br><a href='/review/new?id=" + id + "'>Add review </a><br><br><br>" + this.reviewStr + "<br><br><br> </div></div></div>"  );
+          infowindow.open(map, marker);
       }) 
     }
 
-    for (var i = 0; i < results.length; i++) {
-        placeMarker(results)
+    for (var i = 0; i < results.data.length; i++) {
+//      console.log(results[i].id)
+//      console.log(results.data[i])
+      placeMarker(results, i)
     }
-    
   })
 }

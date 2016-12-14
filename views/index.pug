@@ -11,9 +11,28 @@ html
 
 		#map
 
+		#modal1.modal.modal-fixed-footer
+			.modal-content
+				form(method='post' action='/login/user')
+
+					p E-mail
+					input(type='email', name='loginEmail' required)
+
+					p Password
+					input(type='password', name='loginPassword' required)
+
+					br
+					br
+					input(type='submit' value='submit')
+			.modal-footer
+				a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
+				
+		a(class="modal-trigger waves-effect waves-light btn" href="#modal1") Login
+		form(method='get' action='/logout')
+			button(class="waves-effect waves-light btn") Logout
 
 script(type="text/javascript" src="/js/jquery-3.1.1.min.js")
 script(type="text/javascript" src="/js/materialize.min.js")
 script(type="text/javascript" src="/js/main.js")
 script(async defer
-    src="https://maps.googleapis.com/maps/api/js?key=" + process.env.GMAPS_KEY + "&callback=initMap")
+    src="https://maps.googleapis.com/maps/api/js?key=" + process.env.GMAPS_KEY)
