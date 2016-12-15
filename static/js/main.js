@@ -64,15 +64,31 @@ function initMap() {
         var id = results.data[i].id
         var address = results.data[i].address
         var internet = results.data[i].internet
-        var array = []
+
+        var reviewArr = []
+
 
         if (results.data[i].reviews.length > 0) {
           for (var x = 0; x < results.data[i].reviews.length; x++) {
-            var reviewStr = "<div class='box'>" + results.data[i].reviews[x].rating + "<br>" + results.data[i].reviews[x].comment + "</div>"
-          console.log(results.data[i].reviews[x])
+            var rating = []
+              function createStars ( y ) {
+                var star = " "
+                for ( var x = 0; x < y ; x++) {
+                  star += "*" 
+                }
+                  rating.push( star )
+              }
+            createStars(results.data[i].reviews[x].rating)
+            reviewArr.push("<div class='box'><div align='right'>Rating: <p style='font-size:20px'>" + rating + "</p></div><br>" + results.data[i].reviews[x].comment + "</div>")
+
+//            console.log(results.data[i].reviews)
+
+//            var reviewStr = "<div class='box'><div align='right'>Rating: <p style='font-size:20px'>" + rating + "</p></div><br>" + results.data[i].reviews[x].comment + "</div>"
+//          console.log(results.data[i].reviews[x])
+//           console.log(reviewArr)
           }
         } else {
-          var reviewStr = "No Review"
+          var reviewArr = "<p>There are no reviews for this practice yet!</p>"
         }
 
 //      var reviewStr = (results.data[i].reviews.length > 0) ? results.data[i].reviews[x].rating + "<br>" + results.data[i].reviews[x].comment : "No review"
@@ -85,10 +101,11 @@ function initMap() {
           position: latLng,
           map: map
         })
-        marker.reviewStr = reviewStr
+
+        marker.reviewArr = reviewArr
         google.maps.event.addListener(marker, 'click', function(){
           infowindow.close(); // Close previously opened infowindow
-          infowindow.setContent( "<div id='infowindow'><div id='iw-container'><div class='iw-title'>"+ name + "</div><div class='info'>" + address + "<br>" + internet + "<br><a href='/review/new?id=" + id + "'>Add review </a><br><br><br>" + this.reviewStr + "<br><br><br> </div></div></div>"  );
+          infowindow.setContent( "<div id='infowindow'><div id='iw-container'><div class='iw-title'>"+ name + "</div><div class='info'>" + address + "<br>" + internet + "<br><br><br><br><p>User Reviews</p><a href='/review/new?id=" + id + "'>Write a Review </a><br><br>" + this.reviewArr + "<br><br><br> </div></div></div>"  );
           infowindow.open(map, marker);
       }) 
     }

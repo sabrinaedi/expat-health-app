@@ -1,5 +1,6 @@
 #map {
-    height: 80%;
+    height: 100%;
+    width: 100%;
   }
 
 #infowindow {
@@ -34,3 +35,22 @@
 .info {
 	padding: 20px;
 }
+
+.stars {
+	font-size: 20px;
+}
+
+nav, footer.page-footer {
+	background-color: #0097a7;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
