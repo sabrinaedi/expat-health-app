@@ -162,7 +162,9 @@ function placeMarker(results, i) {
         ehic = "accepted, but only reimbursed afterwards"
       } else if (results.data[i].reviews[x].ehic == "3") {
         ehic = "not accepted"
-      }       
+      } else if (results.data[i].reviews[x].ehic == "4") {
+        ehic = "N/A"
+      }      
       reviewArr.push("<div class='box'><div align='right' style='font-size:20px'>" + rating + "</div><p>Language: " + langStr + "</p><p>EHIC: " + ehic + "</p><br>" + comment + "</div>")
    }
 
@@ -218,7 +220,6 @@ function passwordCheck () {
     let pass1 = document.getElementById("pass1").value;
     let pass2 = document.getElementById("pass2").value;
     let passCheck = document.getElementById("passCheck")
-    let mailCheck = document.getElementById("emailCheck")
     let ok = true;
     if (pass1 !== pass2) {
         document.getElementById("pass1").style.borderColor = "#E34234";
@@ -229,3 +230,25 @@ function passwordCheck () {
     }
     return ok;
 }
+
+function validate_radios() {
+            if (document.getElementById("point1").value == true || document.getElementById("point2").value == true || document.getElementById("point3").value == true || document.getElementById("point4").value == true || document.getElementById("point5").value == true ) {
+
+                return true;
+            }
+            else {
+                alert("Please give a rating");
+                return false;
+            }
+        }
+
+function validate_radiosEhic() {
+            if (document.getElementById("accept").value == true || document.getElementById("reimbursed").value == true || document.getElementById("notAccepted").value == true || document.getElementById("na").value == true ) {
+
+                return true;
+            }
+            else {
+                alert("Please give a rating");
+                return false;
+            }
+        }

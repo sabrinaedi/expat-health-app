@@ -28,15 +28,15 @@ html
 				h4 #{data.name}
 				br
 
-				p Language spoken:
+				p Language spoken (required)
 
-				form(method='post' action='/addReview')
+				form(method='post' action='/addReview' onsubmit="return validate_radios()")
 					p 
 						select(id='pickLanguage' name='languages')
 							option 
 					
 					br
-					p EHIC acceptance
+					p EHIC acceptance (required)
 					p
 						input#accept(class='ehic' name='group2', type='radio' value='1')
 						label(for='accept') 1: Accepted
@@ -46,8 +46,11 @@ html
 					p
 						input#notAccepted(class='ehic' name='group2', type='radio' value='3')
 						label(for='notAccepted') 3: Refused
+					p
+						input#na(class='ehic' name='group2', type='radio' value='4')
+						label(for='na') 4: N/A
 					br
-					p How many stars would you give?
+					p How many stars would you give? (required)
 					p
 						input#point1(name='group1', type='radio' value='1')
 						label(for='point1') 1: Sucks
@@ -65,7 +68,7 @@ html
 						label(for='point5') 5: I was overwhelmed with joy
 					br
 					p Comments?
-					textarea(type='text' name='inputComment')
+					textarea(type='text' name='inputComment' pattern=".{3,700}" title="Please do not exceed the comment limit of 700 words")
 					br
 					p
 					input(id="submitReview" type='submit' value='submit')

@@ -24,7 +24,7 @@ router.post('/users', (req, res) => {
 			)
 		} ).then( num => {
 			if ( num > 0 ) {
-				res.redirect('/users/new?message=' + encodeURIComponent("username or email already exists"))
+				res.redirect('/users?message=' + encodeURIComponent("username or email already exists"))
 			} else {
 				bcrypt.hash(req.body.inputPassword, null, null, (err, hash) => {
 					User.create({

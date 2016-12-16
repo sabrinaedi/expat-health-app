@@ -35,6 +35,7 @@ router.post('/addReview', (req, res) => {
 //	console.log(req.body.group1)
 //	console.log(req.body.group2)
 //	console.log(req.body.languages)
+	if (req.body.languages == true && req.body.group1 == 1 && req.body.group2 == true) {
 
 	User.findOne({
 		where: {
@@ -59,6 +60,9 @@ router.post('/addReview', (req, res) => {
 	}).then ( user => {
 	res.redirect('/')
 	})
+	} else {
+		res.redirect('/addReview?message=' + encodeURIComponent("Please fill in all the required fields"))
+	}
 })
 
 module.exports = router
