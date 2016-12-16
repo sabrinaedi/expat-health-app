@@ -18,6 +18,8 @@ html
 								a(class="modal-trigger" href='#login') Log in
 							li
 								a(href='/logout') Log out
+							li
+								a(href='/register') Sign up
 
 			#login.modal.modal-fixed-footer
 				.modal-content
@@ -34,11 +36,23 @@ html
 						input(type='submit' value='submit')
 				.modal-footer
 					a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
-			#map
-//-		footer(class='page-footer')
+
+
+				
+			div#floating-panel
+				form
+					p Search your Language:
+						select(id='pickLanguage' name='languages')
+							option Show All
+						input(id="submitLang" type="submit" value="submit")
+	
+			div#map
+
+
+		footer(class='page-footer')
 			div(class='container')
 				div(class='row')
-					div(class='grey-text text-lighten-4') kkjjklsdfjfaskl
+					div(class='grey-text text-lighten-4') Foooooooterrrrrrrrr
 
 //-		a(class="modal-trigger waves-effect waves-light btn" href="#login") Login
 		form(method='get' action='/logout')

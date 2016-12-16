@@ -5,6 +5,7 @@ const sequelize = require('sequelize')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const bcrypt = require('bcrypt-nodejs')
 
 // set views
 app.set('views', __dirname + '/../views')
@@ -27,12 +28,15 @@ let read = require(__dirname + '/routes/jsonreader')
 let review = require(__dirname + '/routes/review')
 let languages = require(__dirname + '/routes/languages')
 let login = require(__dirname + '/routes/login')
-let reviewQuery = ""
+let filter = require(__dirname + '/routes/filter')
+let register = require(__dirname + '/routes/register')
 
 app.use('/', gmaps)
 app.use('/', review)
 app.use('/', languages)
 app.use('/', login)
+app.use('/', filter)
+app.use('/', register)
 
 // testroute
 app.get('/ping', (req, res) => {

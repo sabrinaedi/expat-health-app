@@ -9,8 +9,19 @@ let db = new sequelize('expathealth', process.env.POSTGRES_USER, process.env.POS
 
 // define database models
 let User = db.define('users', {
-	name: sequelize.STRING,
-	email: sequelize.STRING,
+	name: {
+		type: sequelize.STRING,
+		allowNull: false,
+		unique: true,
+		validate: {
+			len: [3, 20]
+		}
+	},
+	email: {
+		type: sequelize.STRING,
+		allowNull: false,
+		unique: true
+	},
 	password: sequelize.STRING
 })
 

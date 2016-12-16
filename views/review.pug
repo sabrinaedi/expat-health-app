@@ -13,53 +13,67 @@ html
 
 	body
 
-		div(class="container")
-			h3 ...............Review page!
+		main
+			nav
+				.nav-wrapper
+						a.brand-logo(href='/') Find your Doctor
+							i(class='fa fa-user-md')
+							ul#nav-mobile.right.hide-on-med-and-down
+								li
+									a(class="modal-trigger" href='#login') Log in
+								li
+									a(href='/logout') Log out
 
-			h4 #{data.name}
-			br
+			div(class="container")
+				h4 #{data.name}
+				br
 
-			p Language spoken:
+				p Language spoken:
 
-			form(method='post' action='/addReview')
-				p 
-					select(id='pickLanguage' name='languages')
-						option 
-				
-				br
-				p EHIC acceptance
-				p
-					input#accept(class='ehic' name='group2', type='radio' value='1')
-					label(for='accept') 1: Accepted
-				p
-					input#reimbursed(class='ehic' name='group2', type='radio' value='2')
-					label(for='reimbursed') 2: Accepted, but reimbursed
-				p
-					input#notAccepted(class='ehic' name='group2', type='radio' value='3')
-					label(for='notAccepted') 3: Refused
-				br
-				p How many stars would you give?
-				p
-					input#point1(name='group1', type='radio' value='1')
-					label(for='point1') 1: Sucks
-				p
-					input#point2(name='group1', type='radio' value='2')
-					label(for='point2') 2: Alright...    
-				p
-					input#point3(name='group1', type='radio' value='3')
-					label(for='point3') 3: Decent
-				p
-					input#point4(name='group1', type='radio' value='4')
-					label(for='point4') 4: Surprisingly good
-				p
-					input#point5(name='group1', type='radio' value='5')
-					label(for='point5') 5: I was overwhelmed with joy
-				br
-				p Comments?
-				textarea(type='text' name='inputComment')
-				br
-				p
-				input(id="submitReview" type='submit' value='submit')
+				form(method='post' action='/addReview')
+					p 
+						select(id='pickLanguage' name='languages')
+							option 
+					
+					br
+					p EHIC acceptance
+					p
+						input#accept(class='ehic' name='group2', type='radio' value='1')
+						label(for='accept') 1: Accepted
+					p
+						input#reimbursed(class='ehic' name='group2', type='radio' value='2')
+						label(for='reimbursed') 2: Accepted, but reimbursed
+					p
+						input#notAccepted(class='ehic' name='group2', type='radio' value='3')
+						label(for='notAccepted') 3: Refused
+					br
+					p How many stars would you give?
+					p
+						input#point1(name='group1', type='radio' value='1')
+						label(for='point1') 1: Sucks
+					p
+						input#point2(name='group1', type='radio' value='2')
+						label(for='point2') 2: Alright...    
+					p
+						input#point3(name='group1', type='radio' value='3')
+						label(for='point3') 3: Decent
+					p
+						input#point4(name='group1', type='radio' value='4')
+						label(for='point4') 4: Surprisingly good
+					p
+						input#point5(name='group1', type='radio' value='5')
+						label(for='point5') 5: I was overwhelmed with joy
+					br
+					p Comments?
+					textarea(type='text' name='inputComment')
+					br
+					p
+					input(id="submitReview" type='submit' value='submit')
+
+		footer(class='page-footer')
+			div(class='container')
+				div(class='row')
+					div(class='grey-text text-lighten-4') kkjjklsdfjfaskl
 
 script(type="text/javascript" src="/js/jquery-3.1.1.min.js")
 script(type="text/javascript" src="/js/materialize.min.js")

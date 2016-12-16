@@ -1,6 +1,7 @@
 #map {
-    height: 100%;
+    height: 90%;
     width: 100%;
+    position: relative;
   }
 
 #infowindow {
@@ -54,3 +55,17 @@ main {
     flex: 1 0 auto;
 }
 
+#floating-panel {
+  position: absolute;
+  top: 150px;
+  left: 3%;
+  background-color: #fff;
+  padding: 5px;
+  text-align: center;
+  color: black;
+  z-index: 99
+}
+
+footer.page-footer {
+	height: 100px;
+}

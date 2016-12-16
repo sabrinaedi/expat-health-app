@@ -4,6 +4,7 @@
   "description": "This app aims to support expats in Amsterdam in finding expat-friendly health centres and practitioners by providing a map with information on languages, ratings and the acceptance of the EHIC.",
   "main": "index.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",

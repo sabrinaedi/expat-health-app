@@ -41,9 +41,9 @@ router.get('/gpData', (req, res) => {
 let update = () => {
 	read(__dirname + '/../datasets/huisartsen.json', function (data) {
 		for (var i = 0; i < data.features.length; i++) {
-//				console.log(locations.features[i].properties.titel)
+//			console.log(locations.features[i].properties.titel)
 //			locations = data
-//				console.log(locations)
+//			console.log(locations)
 
 			db.Location.create({
 				name: data.features[i].properties.titel,
