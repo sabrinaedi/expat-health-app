@@ -1,25 +1,11 @@
 html
-	head
-		title Health Map
 
-		link(type='text/css' rel='stylesheet' href='/css/materialize.min.css' )
-		link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-		link(type='text/css' rel='stylesheet' href='/css/main.css')
-		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+	-var title = "Expat Health Map"
+	include includes/header.pug
+
 	body
 		main
-			nav
-				.nav-wrapper
-					a.brand-logo(href='/') Find your Doctor
-						i(class='fa fa-user-md')
-						ul#nav-mobile.right.hide-on-med-and-down
-							li
-								a(class="modal-trigger" href='#login') Log in
-							li
-								a(href='/logout') Log out
-							li
-								a(href='/register') Sign up
+			include includes/navbar.pug
 
 			#login.modal.modal-fixed-footer
 				.modal-content
@@ -49,17 +35,4 @@ html
 			div#map
 
 
-		footer(class='page-footer')
-			div(class='container')
-				div(class='row')
-					div(class='grey-text text-lighten-4') Foooooooterrrrrrrrr
-
-//-		a(class="modal-trigger waves-effect waves-light btn" href="#login") Login
-		form(method='get' action='/logout')
-			button(class="waves-effect waves-light btn") Logout
-
-script(type="text/javascript" src="/js/jquery-3.1.1.min.js")
-script(type="text/javascript" src="/js/materialize.min.js")
-script(type="text/javascript" src="/js/main.js")
-script(async defer
-    src="https://maps.googleapis.com/maps/api/js?key=" + process.env.GMAPS_KEY)
+		include includes/footer.pug

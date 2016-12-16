@@ -1,28 +1,12 @@
 html
-	head
-		title New Review
 
-		link(type='text/css' rel='stylesheet' href='/css/materialize.min.css' )
-		link(rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
-		link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-		link(type='text/css' rel='stylesheet' href='/css/main.css')
-		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		meta(name="format-detection" content="telephone=no")
-
+	-var title = "Review"
+	include includes/header.pug
 
 	body
 
 		main
-			nav
-				.nav-wrapper
-						a.brand-logo(href='/') Find your Doctor
-							i(class='fa fa-user-md')
-							ul#nav-mobile.right.hide-on-med-and-down
-								li
-									a(class="modal-trigger" href='#login') Log in
-								li
-									a(href='/logout') Log out
+			include includes/navbar.pug
 
 			div(class="container")
 				h4 #{data.name}
@@ -73,13 +57,4 @@ html
 					p
 					input(id="submitReview" type='submit' value='submit')
 
-		footer(class='page-footer')
-			div(class='container')
-				div(class='row')
-					div(class='grey-text text-lighten-4') kkjjklsdfjfaskl
-
-script(type="text/javascript" src="/js/jquery-3.1.1.min.js")
-script(type="text/javascript" src="/js/materialize.min.js")
-script(type="text/javascript" src="/js/main.js")
-script(async defer
-    src="https://maps.googleapis.com/maps/api/js?key=" + process.env.GMAPS_KEY)
+		include includes/footer.pug

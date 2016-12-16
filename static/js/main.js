@@ -231,24 +231,13 @@ function passwordCheck () {
     return ok;
 }
 
-function validate_radios() {
-            if (document.getElementById("point1").value == true || document.getElementById("point2").value == true || document.getElementById("point3").value == true || document.getElementById("point4").value == true || document.getElementById("point5").value == true ) {
-
-                return true;
-            }
-            else {
-                alert("Please give a rating");
-                return false;
-            }
-        }
-
-function validate_radiosEhic() {
-            if (document.getElementById("accept").value == true || document.getElementById("reimbursed").value == true || document.getElementById("notAccepted").value == true || document.getElementById("na").value == true ) {
-
-                return true;
-            }
-            else {
-                alert("Please give a rating");
-                return false;
-            }
-        }
+//function validate_radios() {
+//            if (document.getElementById("point1").value !==undefined || document.getElementById("point2").value !==undefined || document.getElementById("point3").value !==undefined || document.getElementById("point4").value !==undefined || document.getElementById("point5").value !==undefined ) {
+//
+//                return true;
+//            }
+//            else {
+//                alert("Please give a rating");
+//                return false;
+//            }
+//        }

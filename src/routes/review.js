@@ -35,7 +35,7 @@ router.post('/addReview', (req, res) => {
 //	console.log(req.body.group1)
 //	console.log(req.body.group2)
 //	console.log(req.body.languages)
-	if (req.body.languages == true && req.body.group1 == 1 && req.body.group2 == true) {
+	if (req.body.languages !== undefined && req.body.group1 !== undefined && req.body.group2 !== undefined) {
 
 	User.findOne({
 		where: {
